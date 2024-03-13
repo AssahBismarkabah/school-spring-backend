@@ -1,0 +1,85 @@
+databaseChangeLog:
+  - changeSet:
+      id: '001-create-student-and-staff-table'
+      author: 'ssegning'
+      changes:
+        - createTable:
+            tableName: students
+            columns:
+              - column:
+                  name: "id"
+                  constraints:
+                    primaryKey: true
+                  type: "varchar(64)"
+              - column:
+                  name: "creation_date"
+                  type: date
+              - column:
+                  name: "last_modified_date"
+                  type: date
+              - column:
+                  name: "creation_by"
+                  type: varchar
+              - column:
+                  name: "last_modified_by"
+                  type: varchar
+              - column:
+                  name: "name"
+                  type: varchar
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: "password"
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "birth_date"
+                  type: date
+          createIndex:
+            indexName: uk_name_per_student
+            tableName: students
+            columns:
+              - column:
+                  name: name
+        - createTable:
+            tableName: staff
+            columns:
+              - column:
+                  name: "id"
+                  constraints:
+                    primaryKey: true
+                  type: "varchar(64)"
+              - column:
+                  name: "creation_date"
+                  type: date
+              - column:
+                  name: "last_modified_date"
+                  type: date
+              - column:
+                  name: "creation_by"
+                  type: varchar
+              - column:
+                  name: "last_modified_by"
+                  type: varchar
+              - column:
+                  name: "name"
+                  type: varchar
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: "password"
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "roles"
+                  type: text
+          createIndex:
+            indexName: uk_name_per_staff
+            tableName: staff
+            columns:
+              - column:
+                  name: name

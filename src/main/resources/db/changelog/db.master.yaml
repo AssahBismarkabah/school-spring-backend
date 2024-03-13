@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: 001-create-student-and-staff-table.yaml
+      relativeToChangelogFile: true
